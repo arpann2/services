@@ -9,5 +9,5 @@ services:
     ports:
       - "8123:8123"    
     volumes:
-      - /home/arpan/home-assistant:/config
+      - /path/to/home-assistant:/config
     restart: unless-stopped
