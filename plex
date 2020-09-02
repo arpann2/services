@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000 
+      - PGID=1000
+      - VERSION=docker
+      - TZ=Europe/London
+      - PLEX_CLAIM= #optional
+    ports:
+      - "32400:32400/tcp"
+    volumes:
+      - /path/to/plex:/config
+      - /path/to/web-series:/tv
+      - /path/to/movies:/movies
+    restart: unless-stopped
