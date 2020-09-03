@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    privileged: true
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    environment:
+      TZ: 'Europe/London'
+    volumes:
+      - '/path/to/etc-pihole/:/etc/pihole/'
+      - '/path/to/etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
